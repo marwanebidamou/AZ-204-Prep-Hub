@@ -1,0 +1,95 @@
+# Using Docker Desktop and Visual Studio Container Tools
+
+## Overview
+This document covers the process of creating an Azure Container Registry (ACR), adding Docker support to applications using Visual Studio Container Tools, and deploying containerized applications to Azure.
+
+---
+
+## 1. Setting Up Azure Container Registry (ACR)
+
+### Azure CLI
+1. **Login to Azure:**
+   ```bash
+   az login
+   ```
+2. **Create a Resource Group:**
+   ```bash
+   az group create --name <resource-group-name> --location <location>
+   ```
+3. **Create the Container Registry:**
+   ```bash
+   az acr create --resource-group <resource-group-name> \
+     --name <acr-name> --sku Basic
+   ```
+
+### Azure Portal
+1. Navigate to **Azure Portal**.
+2. Click **Create a Resource** > **Containers** > **Container Registry**.
+3. Provide the required details:
+   - **Resource Group:** Select or create one.
+   - **Registry Name:** Enter a unique name.
+   - **SKU:** Select Basic.
+4. Click **Review + Create** and then **Create**.
+
+---
+
+## 2. Adding Docker Support to Visual Studio Applications
+
+### Prerequisites
+- Docker Desktop installed and running.
+- Visual Studio with Container Tools installed.
+
+### Steps
+1. Open the application in **Visual Studio**.
+2. **Add Docker Support:**
+   - Right-click on the project in Solution Explorer.
+   - Select **Add** > **Docker Support**.
+   - Choose the target operating system (Linux or Windows).
+   
+3. Verify the generated `Dockerfile` in the project.
+
+### Test Locally with Docker
+1. Switch to **Docker** as the run configuration in Visual Studio.
+2. Build and run the application locally to ensure it works in a container.
+
+---
+
+## 3. Pushing the Application to Azure Container Registry (ACR)
+
+### Azure CLI
+1. **Login to ACR:**
+   ```bash
+   az acr login --name <acr-name>
+   ```
+2. **Tag the Docker Image:**
+   ```bash
+   docker tag <image-name> <acr-name>.azurecr.io/<image-name>:<tag>
+   ```
+3. **Push the Image to ACR:**
+   ```bash
+   docker push <acr-name>.azurecr.io/<image-name>:<tag>
+   ```
+
+### Azure Portal
+1. Navigate to the **Container Registry** resource in Azure.
+2. Go to **Repositories** and verify the pushed image.
+
+---
+
+## 4. Publishing Using Visual Studio
+1. **Publish Application:**
+   - Right-click the project in Solution Explorer.
+   - Select **Publish** > **Azure**.
+   - Choose **Azure Container Registry**.
+2. Select the appropriate registry and create a new publish profile.
+3. Click **Publish** to push the image to ACR.
+
+---
+
+## Notes
+- **Docker Desktop Configuration:** Ensure the Docker engine is running and the target container type (Linux/Windows) matches the application's requirements.
+- **ACR SKUs:** Choose higher SKUs like Premium for features like geo-replication and private endpoints.
+
+---
+
+This document provides a streamlined workflow for containerizing and deploying applications to Azure, leveraging Visual Studio and Docker tools.
