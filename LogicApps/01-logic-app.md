@@ -41,6 +41,29 @@ This guide provides steps to create, deploy, and manage Logic Apps using the Azu
 
 ---
 
+
+## Common Use Cases
+
+1. **Data Movement**:
+   - Automate the transfer of files between storage accounts or from on-premises to cloud storage.
+
+2. **Application Integration**:
+   - Sync data between different apps, such as syncing CRM records from Salesforce to Dynamics 365.
+
+3. **Event-Driven Workflows**:
+   - Trigger actions based on Azure Event Grid or Service Bus events.
+
+4. **Approval Workflows**:
+   - Automate document approval processes using Office 365 and Teams.
+
+5. **Notifications and Alerts**:
+   - Send email or SMS notifications based on triggers (e.g., critical system failures).
+
+6. **Data Transformation**:
+   - Convert data between formats such as JSON, XML, or CSV.
+
+---
+
 ## Steps to Create a Logic App
 
 ### Using Azure Portal
