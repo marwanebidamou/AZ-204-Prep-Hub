@@ -68,6 +68,66 @@ Azure offers multiple redundancy options to ensure high availability and durabil
 
 ---
 
+
+## Blob Storage Types
+
+Azure Blob Storage supports three distinct types of blobs, each tailored to different scenarios:
+
+### 1. Block Blobs
+
+**Overview**:  
+Block blobs are designed for storing large files such as text and binary data.
+
+**Key Features**:
+- Data is divided into blocks, which can be uploaded independently.
+- Ideal for storing documents, images, videos, and backups.
+
+**Use Cases**:
+- Uploading large files in chunks.
+- Storing unstructured data efficiently.
+
+---
+
+### 2. Append Blobs
+
+**Overview**:  
+Append blobs are optimized for scenarios where data needs to be added sequentially.
+
+**Key Features**:
+- Supports append-only operations; existing data cannot be modified.
+- Each blob can grow up to 4.75 TiB in size.
+
+**Use Cases**:
+- Storing logs from virtual machines or applications.
+- Audit trails and streaming data.
+
+---
+
+### 3. Page Blobs
+
+**Overview**:  
+Page blobs are designed for workloads requiring frequent updates to data.
+
+**Key Features**:
+- Data is organized into 512-byte pages.
+- Supports random read/write operations.
+- Can store up to 8 TiB of data.
+
+**Use Cases**:
+- Storing virtual hard disk (VHD) files for Azure virtual machines.
+- Databases and scenarios requiring frequent updates.
+
+---
+
+### Quick Comparison of Blob Types
+
+| **Blob Type**    | **Use Case**                   | **Max Size** | **Key Characteristics**                                     |
+|-------------------|--------------------------------|--------------|-------------------------------------------------------------|
+| **Block Blobs**   | Text/binary data storage       | 4.75 TiB     | Uploaded in blocks, best for large file uploads.            |
+| **Append Blobs**  | Sequential data logging       | 4.75 TiB     | Optimized for appending operations, existing data immutable.|
+| **Page Blobs**    | Random read/write workloads   | 8 TiB        | Used for frequently updated data like virtual disk storage. |
+
+---
 ## Creating a Storage Account
 
 ### Azure Portal
